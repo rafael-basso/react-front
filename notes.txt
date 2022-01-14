@@ -1,0 +1,11 @@
+nao precisa criar pasta para criar projeto React. E soh ir no cmd e digitar o comando de criacao: npx create-react-app <nome do projeto> --template=typescript // dentro da pasta que quero que meu projeto fique. Assim que terminar a criacao, digitar "code ." que vscode abrira
+
+caso tenha erro no tsconfig.json, apagar o "jsx" dentro de ""jsx": "react-jsx" e fazer:
+Go to the command palette CTRL+Shift+P.
+Choose "TypeScript: Select a TypeScript Version...".
+Choose "Use workspace Version".
+
+tirar as bolinhas de edicao: settings/user/extensions/git/enabled: whether git is enabled
+
+npm start //para iniciar projeto
+

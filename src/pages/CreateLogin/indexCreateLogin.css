@@ -1,0 +1,41 @@
+.main-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+strong, span {
+    color:black;
+    font-size: 1.2rem;
+    margin: 0.2rem;    
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styleLogin {
+    width: 20%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+    padding: 10px;
+    margin: 25px auto;
+    
+    border: 3px solid black;
+    border-radius: 15px;
+    background-color: aqua;
+    
+    outline: none;
+    transition: background-color .2s;
+  }
+
+#link2 {
+    text-decoration: none;
+    color: black;    
+}

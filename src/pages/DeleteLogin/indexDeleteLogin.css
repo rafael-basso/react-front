@@ -1,0 +1,27 @@
+.main-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+strong, span {
+    color:black;
+    font-size: 1.2rem;
+    margin: 0.2rem;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styleLogin {
+    width: 50%;
+    padding: 10px;
+}
+
+#link1 {
+    text-decoration: none;
+}
