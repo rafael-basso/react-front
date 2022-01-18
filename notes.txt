@@ -7,5 +7,5 @@ Choose "Use workspace Version".
 
 tirar as bolinhas de edicao: settings/user/extensions/git/enabled: whether git is enabled
 
-npm start //para iniciar projeto
+npm start OU yarn start //para iniciar projeto
 

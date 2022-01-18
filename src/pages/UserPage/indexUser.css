@@ -157,7 +157,19 @@ tbody td {
     text-align: center;
 }
 
-tbody tr img{
+/* tbody tr img{
     flex: 1;
+} */
+
+tbody tr a{
+    flex: 1;
+
+    font: 15pt Lucida, serif;
+    color: black;
+    margin-left: 10px;
+}
+
+tbody tr a:hover {
+  cursor: pointer;
 }
 

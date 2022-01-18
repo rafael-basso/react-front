@@ -66,7 +66,7 @@ const User = () => {
           for (let i = 0; i < response.data.length; i++) {
               if (JSON.stringify(response.data[i].transaction_name) === JSON.stringify(getData[index][0])) {         
                   const idBalance = response.data[i].id
-                  console.log(idBalance)
+                  //console.log(idBalance)
                   api.delete(`/balance/${idBalance}`)
                   return
               }
@@ -190,7 +190,8 @@ const User = () => {
                         {item.map((data: any) => 
                         <td>{data}</td>
                         )}
-                        <img src={imgDelete} onClick={() => deleteValues(index)}/>
+                        {/* <img src={imgDelete} onClick={() => deleteValues(index)}/> */}
+                        <a onClick={() => deleteValues(index)}>DELETE</a>
                       </tr>
                     )}                                    
                                            

@@ -70,7 +70,7 @@ const Login = () => {
 
   return (
     <div className="boxStyle">
-      <form action="" className="data" onSubmit={getTable}>
+      <form action="" onSubmit={getTable}>
         <input
           onChange={handleInputChange}
           name="name"
