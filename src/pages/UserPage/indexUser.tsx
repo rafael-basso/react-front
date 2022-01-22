@@ -4,7 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
 
 import "../UserPage/indexUser.css";
-import imgDelete from "../../assets/delete.webp"
+//import imgDelete from "../../assets/delete.webp"
 
 const User = () => {
   const history = useHistory()
@@ -16,7 +16,7 @@ const User = () => {
   const [getData, setGetData] = useState<any[]>([])
   let array: any[] = []
   
-  var dateFormat = require("dateformat");
+  //var dateFormat = require("dateformat");
 
   //pegar nome pelo id do usuario
   useEffect(() => {
