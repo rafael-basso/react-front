@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
 
 import "../UserPage/indexUser.css";
+import "../../App";
 //import imgDelete from "../../assets/delete.webp"
 
 const User = () => {
@@ -16,7 +17,6 @@ const User = () => {
   const [getData, setGetData] = useState<any[]>([])
   let array: any[] = []
   
-  //var dateFormat = require("dateformat");
 
   //pegar nome pelo id do usuario
   useEffect(() => {
@@ -24,8 +24,11 @@ const User = () => {
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].id) === JSON.stringify(getInput.id)) {
           //setGetName(response.data[Number(idData)-1].name)
-          setGetName(response.data[i].name)
+          
           //console.log(response.data[i].name)
+          const nameApi = response.data[i].name;
+          const name = (nameApi.substr(0, nameApi.indexOf('@')))
+          setGetName(name)
           return
         }
       }
@@ -163,7 +166,7 @@ const User = () => {
           </button>
 
           <Link to="/" id="lk1">
-            <strong>Back</strong>
+            <strong>Log out</strong>
             <span>
               <FiArrowLeft />
             </span>
@@ -173,7 +176,6 @@ const User = () => {
 
       <div className="modal-overlay" id="modal-overlay">
         <div className="modal">
-
           <section>
             <table id="data-table">
               <thead>
@@ -191,7 +193,7 @@ const User = () => {
                         <td>{data}</td>
                         )}
                         {/* <img src={imgDelete} onClick={() => deleteValues(index)}/> */}
-                        <a onClick={() => deleteValues(index)}>DELETE</a>
+                        <a onClick={() => deleteValues(index)}>Delete</a>
                       </tr>
                     )}                                    
                                            

@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
 
 import "../DeleteLogin/indexDeleteLogin.css";
+import "../../App";
 
 const DeleteLogin = () => {
   const [getInput, setGetInput] = useState({ name: "" });

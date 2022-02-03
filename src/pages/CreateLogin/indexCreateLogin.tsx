@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
 
 import "../CreateLogin/indexCreateLogin.css";
+import "../../App";
 
 const CreateLogin = () => {
   const [getInput, setGetInput] = useState({ name: "", password: "" });

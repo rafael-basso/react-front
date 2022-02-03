@@ -5,6 +5,7 @@ import api from '../../services/api';
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowRight } from 'react-icons/fi'
 
+import "../../App.css";
 import "../Login/indexLogin.css";
 
 
