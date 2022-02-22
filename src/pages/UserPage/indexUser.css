@@ -42,6 +42,12 @@ h1 {
     justify-content: center;
 }
 
+.info {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
 /* FORM */
 /* div#form {
     width: 96%;
