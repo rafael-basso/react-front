@@ -5,13 +5,20 @@
     height: 100vh;
 }
 
-#lk1 {
-    text-decoration: none;
-    color: black;  
-    
-    display: flex;
-    /* align-items: flex-start; */
+#lk1 {    
+    color: black;      
+    display: flex;    
     justify-content: center;
+}
+
+#lk1 a {
+  text-decoration: none;
+  display: flex;
+}
+
+#lk1 span {
+  align-items: center;
+  display: flex;
 }
 
 .btn {
@@ -49,11 +56,6 @@ h1 {
 }
 
 /* FORM */
-/* div#form {
-    width: 96%;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-} */
 
 div.input-group label {
     font-size: 3rem;
@@ -84,6 +86,14 @@ input {
 
 .input-group small {
     font-size: 1.3rem;
+}
+
+.input-group #amount {
+  margin-bottom: 0.5rem;
+}
+
+.input-group#fixMargin {
+  margin-top: 0;
 }
 
  /* VIEW DATA */
