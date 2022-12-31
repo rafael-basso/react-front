@@ -1,4 +1,5 @@
-nao precisa criar pasta para criar projeto React. E soh ir no cmd e digitar o comando de criacao: npx create-react-app <nome do projeto> --template=typescript // dentro da pasta que quero que meu projeto fique. Assim que terminar a criacao, digitar "code ." que vscode abrira
+Rota da porta usada pelo react: nodeModules/react-scripts/scripts/start.js e achar:
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3001;nao precisa criar pasta para criar projeto React. E soh ir no cmd e digitar o comando de criacao: npx create-react-app <nome do projeto> --template=typescript // dentro da pasta que quero que meu projeto fique. Assim que terminar a criacao, digitar "code ." que vscode abrira
 
 caso tenha erro no tsconfig.json, apagar o "jsx" dentro de ""jsx": "react-jsx" e fazer:
 Go to the command palette CTRL+Shift+P.
@@ -9,3 +10,5 @@ tirar as bolinhas de edicao: settings/user/extensions/git/enabled: whether git i
 
 npm start OU yarn start //para iniciar projeto
 
+**************************
+teste de mudancas para fazer merge

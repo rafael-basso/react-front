@@ -116,6 +116,7 @@ const User = () => {
     <div className="main">
       <form action="" onSubmit={saveData}>
         <h1>Hello, {getName}</h1>
+        <small className="info">Please, fill in the inputs with your information</small>
 
         <div className="input-group">
           <label htmlFor="description">Description</label>
