@@ -2,7 +2,6 @@ import { useState, ChangeEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
-
 import "../CreateLogin/indexCreateLogin.css";
 import "../../App";
 
@@ -10,10 +9,8 @@ const CreateLogin = () => {
   const [getInput, setGetInput] = useState({ name: "", password: "" });
   const history = useHistory();
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    //console.log(event.target.name, event.target.value)
-    const { name, value } = event.target;
-    //console.log(name, value)
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {    
+    const { name, value } = event.target;    
     setGetInput({ ...getInput, [name]: value });
   }
 
@@ -23,8 +20,7 @@ const CreateLogin = () => {
       return;
     }
 
-    api.get("/").then((response) => {
-      //console.log(response.data)
+    api.get("/").then((response) => {      
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].name) === JSON.stringify(getInput.name)) {
           alert("E-mail already taken");
@@ -32,9 +28,10 @@ const CreateLogin = () => {
         }
       }
       api.post("/", getInput);
-      alert("Login created successfully!");
-      //window.location.reload()
+      alert("Login created successfully!");      
       history.push('/')
+    }).catch(function () {      
+      alert("Connection error: server not found.");
     });
   }
   
@@ -44,7 +41,6 @@ const CreateLogin = () => {
     );
     return re.test(email);
   }
-
 
   return (
     <div className="main-page">
@@ -71,8 +67,7 @@ const CreateLogin = () => {
           onClick={() => createLogin()}
         >
           Create Login
-        </button>         
-                     
+        </button>                              
         <div className="link">
           <Link to="/" id="link1">
             <strong>Back</strong>
@@ -81,7 +76,6 @@ const CreateLogin = () => {
             </span>
           </Link>
         </div>
-
       </form>
     </div>
   );

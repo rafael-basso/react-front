@@ -2,7 +2,6 @@ import { useState, ChangeEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
-
 import "../DeleteLogin/indexDeleteLogin.css";
 import "../../App";
 
@@ -10,10 +9,8 @@ const DeleteLogin = () => {
   const [getInput, setGetInput] = useState({ name: "" });
   const history = useHistory();
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    //console.log(event.target.name, event.target.value)
-    const { name, value } = event.target;
-    //console.log(name, value)
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {    
+    const { name, value } = event.target;    
     setGetInput({ ...getInput, [name]: value });
   }
   
@@ -25,16 +22,16 @@ const DeleteLogin = () => {
     api.get("/").then((response) => {
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].name) === JSON.stringify(getInput.name)) {
-          const id = response.data[i].id
-          //console.log(id)
+          const id = response.data[i].id          
           api.delete(`/${id}`)
-          alert('Login deleted successfully!')
-          //window.location.reload()
+          alert('Login deleted successfully!')          
           history.push('/')
           return;
         }
       }
       alert('E-mail not found')
+    }).catch(function () {      
+      alert("Connection error: server not found.");
     });
   }
 
@@ -62,8 +59,7 @@ const DeleteLogin = () => {
           onClick={() => deleteData()}
         >
           Delete            
-        </button>
-     
+        </button>     
         <div className="link">
           <Link to="/" id="link1">
             <strong>Back</strong>
@@ -72,7 +68,6 @@ const DeleteLogin = () => {
             </span>
           </Link>
         </div>
-
       </form>
     </div>
   );
