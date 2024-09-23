@@ -113,105 +113,90 @@ const User = () => {
   }
 
   return (
-      <div className="main">
-          <form action="" onSubmit={saveData}>
-              <h1>Hello, {getName}</h1>
-              <small className="info">
-                  Please, fill in the inputs with your information
-              </small>
-
-              <div className="input-group">
-                  <label htmlFor="description">Description</label>
-                  <input
-                      onChange={handleInputChange}
-                      type="text"
-                      id="description"
-                      name="description"
-                      placeholder="Descricao"
-                      required
-                  />
-              </div>
-
-              <div className="input-group">
-                  <label htmlFor="amount">Value</label>
-                  <input
-                      onChange={handleInputChange}
-                      type="number"
-                      step="0.01"
-                      id="amount"
-                      name="amount"
-                      placeholder="0.00"
-                      required
-                  />
-                  <small className="help">
-                      Use o sinal - (negativo) e . (ponto) para casas decimais
-                  </small>
-              </div>
-
-              <div className="input-group" id="fixMargin">
-                  <label htmlFor="date">Date</label>
-                  <input
-                      onChange={handleInputChange}
-                      type="date"
-                      id="date"
-                      name="date"
-                      required
-                  />
-              </div>
-
-              <div className="lk">
-                  <button type="submit" className="btn">
-                      Save data
-                  </button>
-
-                  <button type="button" className="btn" onClick={() => open()}>
-                      Show Data
-                  </button>
-
-                  <div id="lk1">
-                      <Link to="/">
-                          <strong>Log out</strong>
-                          <span>
-                              <FiArrowLeft />
-                          </span>
-                      </Link>
-                  </div>
-              </div>
-          </form>
-
-          <div className="modal-overlay" id="modal-overlay">
-              <div className="modal">
-                  <section>
-                      <table id="data-table">
-                          <thead>
-                              <tr>
-                                  <th>Description</th>
-                                  <th>Value</th>
-                                  <th>Date</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              {getData.map((item, index) => (
-                                  <tr key={index}>
-                                      {item.map((data: any) => (
-                                          <td>{data}</td>
-                                      ))}
-                                      {/* <img src={imgDelete} onClick={() => deleteValues(index)}/> */}
-                                      <a onClick={() => deleteValues(index)}>
-                                          Delete
-                                      </a>
-                                  </tr>
-                              ))}
-                          </tbody>
-                      </table>
-                  </section>
-
-                  <button type="button" className="btn" onClick={() => close()}>
-                      Back
-                  </button>
-              </div>
-          </div>
-      </div>
+    <div className="main">
+      <form action="" onSubmit={saveData}>
+        <h1>Hello, {getName}</h1>
+        <small className="info">Please, fill in the inputs with your information</small>
+        <div className="input-group">
+          <label htmlFor="description">Description</label>
+          <input
+            onChange={handleInputChange}
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Descricao"
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="amount">Value</label>
+          <input
+            onChange={handleInputChange}
+            type="number"
+            step="0.01"
+            id="amount"
+            name="amount"
+            placeholder="0.00"
+            required
+          />
+          <small className="help">
+            Use o sinal - (negativo) e . (ponto) para casas decimais
+          </small>
+        </div>
+        <div className="input-group">
+          <label htmlFor="date">Date</label>
+          <input
+            onChange={handleInputChange}
+            type="date"
+            id="date"
+            name="date"
+            required
+          />
+        </div>
+        <div className="lk">
+          <button type="submit" className="btn">
+            Save data
+          </button>
+          <button type="button" className="btn" onClick={() => open()}>
+            Show saved data
+          </button>
+          <Link to="/" id="lk1">
+            <strong>Log out</strong>
+            <span>
+              <FiArrowLeft />
+            </span>
+          </Link>
+        </div>
+      </form>
+      <div className="modal-overlay" id="modal-overlay">
+        <div className="modal">
+          <section>
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>                 
+                    {getData.map((item, index) => 
+                      <tr key={index}>
+                        {item.map((data: any) => 
+                        <td>{data}</td>
+                        )}                        
+                        <a onClick={() => deleteValues(index)}>Delete</a>
+                      </tr>
+                    )}                                                                               
+              </tbody>
+            </table>
+          </section>
+          <button type="button" className="btn" onClick={() => close()}>
+            Back
+          </button>
+        </div>
+      </div>      
+    </div>
   );
 };
 
