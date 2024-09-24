@@ -11,4 +11,3 @@ tirar as bolinhas de edicao: settings/user/extensions/git/enabled: whether git i
 npm start OU yarn start //para iniciar projeto
 
 **************************
-teste de mudancas para fazer merge
