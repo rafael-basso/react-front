@@ -22,11 +22,11 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
- "scripts": {
-  "start": "react-scripts start",
-  "dev": "react-scripts start",
-  "build": "react-scripts build"
-},
+  "scripts": {
+    "start": "serve -s build",
+    "dev": "react-scripts start",
+    "build": "react-scripts build"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -44,7 +44,7 @@
     "@types/dateformat": "^3.0.1",
     "@types/react": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
-    "standard": "^16.0.3",
-    "serve": "14.2.3"
+    "serve": "^6.5.8",
+    "standard": "^16.0.3"
   }
 }
