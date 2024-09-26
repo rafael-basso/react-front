@@ -25,7 +25,7 @@
   "scripts": {
     "start": "serve -s build",
     "dev": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "tsc && react-scripts build"
   },
   "browserslist": {
     "production": [
