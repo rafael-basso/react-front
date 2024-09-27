@@ -71,13 +71,13 @@ const User = () => {
                   let updateData = getData.filter(item => item !== index)
                   setGetData(updateData);
 
-                  return
+                  break;
               }
-            }  
+            } 
+            window.location.reload();
       })      
       
       // console.table(getData)  
-      window.location.reload()
   }
   
   function formatDate(date: string) {
