@@ -38,7 +38,6 @@ const User = () => {
   //buscar dados da tabela 'balance'
   useEffect(() => {
     api.get('balance').then(response => {
-      //let array = [] 
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].idData) === JSON.stringify(getInput.id)) {         
           //console.log(response.data[i])
@@ -47,7 +46,6 @@ const User = () => {
           //setGetData([transaction_name, value, date])
           
           var newDate = formatDate(date)
-          //console.log(newDate) 
 
           array.push([transaction_name, value, newDate])  
           // setGetData([...getData,{transaction_name, value, date}])         
@@ -65,19 +63,20 @@ const User = () => {
       //console.log(getData[index][0]) 
               
       api.get('/balance').then(response => {
-          //console.log(response.data)
           for (let i = 0; i < response.data.length; i++) {
               if (JSON.stringify(response.data[i].transaction_name) === JSON.stringify(getData[index][0])) {         
-                  const idBalance = response.data[i].id
-                  //console.log(idBalance)
+                const idBalance = response.data[i].id
                   api.delete(`/balance/${idBalance}`)
+
+                  let updateData = getData.filter(item => item !== index)
+                  setGetData(updateData);
+
                   return
               }
             }  
       })      
       
-      //getData.splice(index, 1)
-      //console.table(getData)       
+      // console.table(getData)  
       window.location.reload()
   }
   
@@ -182,10 +181,10 @@ const User = () => {
               <tbody>                 
                     {getData.map((item, index) => 
                       <tr key={index}>
-                        {item.map((data: any) => 
-                        <td>{data}</td>
-                        )}                        
-                        <a onClick={() => deleteValues(index)}>Delete</a>
+                        <td>{item[0]}</td>
+                        <td>{item[1]}</td>
+                        <td>{item[2]}</td>                       
+                        <td id="delete" onClick={() => deleteValues(index)}>Delete</td>
                       </tr>
                     )}                                                                               
               </tbody>

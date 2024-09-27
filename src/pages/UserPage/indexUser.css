@@ -144,7 +144,7 @@ table tbody tr td:first-child {
 }
 
 table thead tr th:last-child, 
-table tbody tr td:last-child {
+table tbody tr td:nth-child(3) {
     border-radius: 0 0.25rem 0.25rem 0;
 }
 
@@ -171,16 +171,16 @@ tbody td {
     flex: 1;
 } */
 
-tbody tr a{
+tbody tr td#delete{
     flex: 1;
-
+    background-color: transparent;
     font: 15pt Lucida, serif;
     color: rgba(202, 23, 23, 0.6);
-    margin-left: 10px;
+    padding-left: 10px;
     
 }
 
-tbody tr a:hover {
+tbody tr td#delete:hover {
   cursor: pointer;
   color: rgb(107, 11, 11);
 }
