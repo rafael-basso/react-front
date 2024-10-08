@@ -26,6 +26,8 @@ const Login = () => {
       if (user.length > 0) {
         const id = user[0].id;
 
+        alert("Login success!");
+
         history.push({
           pathname: 'user-page',
           state: id
