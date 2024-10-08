@@ -17,27 +17,23 @@ const Login = () => {
     event.preventDefault();
 
     api.get("/").then((response) => {
-      //console.log(response.data[0].password)
-      //console.log(response.data);
-      //console.log(getInput)
-      
-      for (let i = 0; i < response.data.length; i++) {
-        //if (JSON.stringify(response.data[i]) === JSON.stringify(getInput)) {
-        if (JSON.stringify(response.data[i].name) === JSON.stringify(getInput.name) &&  JSON.stringify(response.data[i].password) === JSON.stringify(getInput.password)) {
-          const id = response.data[i].id
-          //const name = response.data[i].name
-          alert("Login success!");
-          //window.location.reload()
+      const user = response.data.filter((
+        login: { name: string; password: string; }) => 
+          JSON.stringify(login.name) === JSON.stringify(getInput.name) &&
+          JSON.stringify(login.password === JSON.stringify(getInput.password))
+      );
 
-          history.push({
-            pathname: 'user-page',
-            state: id
-          })
-          return;
-        }
+      if (user.length > 0) {
+        const id = user[0].id;
+
+        history.push({
+          pathname: 'user-page',
+          state: id
+        });
+      } else {
+        alert("User not found! Please create your login.");
       }
-      alert("E-mail and password don't match!");
-      //visible?.classList.remove('invisible')
+
     });
   }
   

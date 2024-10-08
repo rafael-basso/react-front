@@ -5,27 +5,21 @@ import api from "../../services/api";
 
 import "../UserPage/indexUser.css";
 import "../../App";
-//import imgDelete from "../../assets/delete.webp"
 
 const User = () => {
   const history = useHistory()
   const idData = history.location.state
-  //console.log(idData)  
   
   const [getInput, setGetInput] = useState({ description: "", amount: "", date: "", id: idData });
   const [getName, setGetName] = useState();
   const [getData, setGetData] = useState<any[]>([])
   let array: any[] = []
-  
 
   //pegar nome pelo id do usuario
   useEffect(() => {
     api.get('/').then(response => {
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].id) === JSON.stringify(getInput.id)) {
-          //setGetName(response.data[Number(idData)-1].name)
-          
-          //console.log(response.data[i].name)
           const nameApi = response.data[i].name;
           const name = (nameApi.substr(0, nameApi.indexOf('@')))
           setGetName(name)
@@ -40,18 +34,14 @@ const User = () => {
     api.get('balance').then(response => {
       for (let i = 0; i < response.data.length; i++) {
         if (JSON.stringify(response.data[i].idData) === JSON.stringify(getInput.id)) {         
-          //console.log(response.data[i])
+          const {transaction_name, value, date} = response.data[i];
           
-          const {transaction_name, value, date} = response.data[i]
-          //setGetData([transaction_name, value, date])
-          
-          var newDate = formatDate(date)
+          var newDate = formatDate(date);
 
           array.push([transaction_name, value, newDate])  
           // setGetData([...getData,{transaction_name, value, date}])         
         }
       }   
-      //console.log(array)
       //console.table(array)
       setGetData(array)
             
@@ -59,9 +49,6 @@ const User = () => {
   }, [])
 
   function deleteValues(index: number){
-      //console.log(index)
-      //console.log(getData[index][0]) 
-              
       api.get('/balance').then(response => {
           for (let i = 0; i < response.data.length; i++) {
               if (JSON.stringify(response.data[i].transaction_name) === JSON.stringify(getData[index][0])) {         
@@ -95,9 +82,7 @@ const User = () => {
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    //console.log(event.target.name, event.target.value)
     const { name, value } = event.target;
-    //console.log(name, value)
     setGetInput({ ...getInput, [name]: value });
   }
 

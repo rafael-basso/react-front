@@ -24,17 +24,18 @@ const CreateLogin = () => {
     }
 
     api.get("/").then((response) => {
-      //console.log(response.data)
-      for (let i = 0; i < response.data.length; i++) {
-        if (JSON.stringify(response.data[i].name) === JSON.stringify(getInput.name)) {
-          alert("E-mail already taken");
-          return;
-        }
+      const login = response.data.filter(
+        (login: { name: string; }) => 
+          JSON.stringify(login.name) === JSON.stringify(getInput.name)
+      );
+
+      if (login.length > 0) {
+        alert("E-mail already taken");        
+      } else {
+        api.post("/", getInput);
+        alert("Login created successfully!");
+        history.push('/')
       }
-      api.post("/", getInput);
-      alert("Login created successfully!");
-      //window.location.reload()
-      history.push('/')
     });
   }
   
