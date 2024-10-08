@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
+
 import "../DeleteLogin/indexDeleteLogin.css";
 import "../../App";
 
@@ -9,8 +10,10 @@ const DeleteLogin = () => {
   const [getInput, setGetInput] = useState({ name: "" });
   const history = useHistory();
 
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {    
-    const { name, value } = event.target;    
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    //console.log(event.target.name, event.target.value)
+    const { name, value } = event.target;
+    //console.log(name, value)
     setGetInput({ ...getInput, [name]: value });
   }
   
@@ -20,17 +23,22 @@ const DeleteLogin = () => {
       return;
     }
     api.get("/").then((response) => {
-      for (let i = 0; i < response.data.length; i++) {
-        if (JSON.stringify(response.data[i].name) === JSON.stringify(getInput.name)) {
-          const id = response.data[i].id          
-          api.delete(`/${id}`)
-          alert('Login deleted successfully!')          
-          history.push('/')
-          return;
-        }
+      const login = response.data.filter(
+        (login: { name: string; id: number; }) => 
+          JSON.stringify(login.name) === JSON.stringify(getInput.name)
+      );
+
+      if (login.length > 0) {
+        const id = login[0].id;
+
+        api.delete(`/${id}`);
+
+        alert('Login deleted successfully!');
+        history.push('/');
+      } else {
+        alert('E-mail not found');
       }
-      alert('E-mail not found')
-    }).catch(function () {      
+    }).catch(function () {
       alert("Connection error: server not found.");
     });
   }
@@ -59,7 +67,8 @@ const DeleteLogin = () => {
           onClick={() => deleteData()}
         >
           Delete            
-        </button>     
+        </button>
+     
         <div className="link">
           <Link to="/" id="link1">
             <strong>Back</strong>
@@ -68,6 +77,7 @@ const DeleteLogin = () => {
             </span>
           </Link>
         </div>
+
       </form>
     </div>
   );
