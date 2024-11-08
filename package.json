@@ -23,7 +23,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=8080 serve -s build",
+    "start": "react-scripts start",
     "dev": "react-scripts start",
     "build": "tsc && react-scripts build"
   },
