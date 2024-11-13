@@ -35,7 +35,8 @@ const Login = () => {
       } else {
         alert("User not found! Please create your login.");
       }
-    }).catch(function () {
+    }).catch(function (err) {
+      console.log(err);
       alert("Connection error: server not found.");
     });
   }
