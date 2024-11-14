@@ -1,11 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
   // baseURL: 'http://localhost:3331',
-  baseURL: 'https://react-back-1ijyzwzzv-rafael-bassos-projects.vercel.app/',
-  withCredentials: true,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
-  }
+  baseURL: 'https://react-back-end-gamma.vercel.app/'  
 })
 export default api
