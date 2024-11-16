@@ -12,3 +12,9 @@ body {
 div input {
   border-radius: 10px;
 }
+
+@media screen and (max-width: 1024px) {
+  .main form {
+    padding: 0 25px;
+  }
+}

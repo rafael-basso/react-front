@@ -22,19 +22,15 @@
 }
 
 .btn {
-    width: 15vw;
-  
+    width: 150px;  
     display: flex;
     align-items: center;
     justify-content: center;
-    
     padding: 10px;
     margin: 15px auto;
-    
     border: 3px solid black;
     border-radius: 15px;
     background-color: aqua;
-    
     outline: none;
     transition: background-color .2s;
 }
@@ -56,7 +52,6 @@ h1 {
 }
 
 /* FORM */
-
 div.input-group label {
     font-size: 3rem;
     
@@ -122,10 +117,7 @@ input {
 .modal {
     background: #c6cad3;
     padding: 2.4rem;
-    /* position: relative;
-    
-    width: 90%;
-    max-width: 500px; */
+    border-radius: 8px;
 }
 
 /* TABLE */
@@ -134,7 +126,6 @@ input {
     width: 100%;
     border-spacing: 0 0.5rem;
     color: #969cb3;
-
     overflow-x: auto;
 }
 
@@ -150,13 +141,9 @@ table tbody tr td:nth-child(3) {
 
 table thead th {
     background: white;
-    
     font-weight: normal;
     padding: 1rem 4rem;
-
     text-align: left;
-   
-    /*opacity: 0.6;*/
 }
 
 tbody td {
@@ -166,10 +153,6 @@ tbody td {
     background-color: white;
     text-align: center;
 }
-
-/* tbody tr img{
-    flex: 1;
-} */
 
 tbody tr td#delete{
     flex: 1;
@@ -183,4 +166,10 @@ tbody tr td#delete{
 tbody tr td#delete:hover {
   cursor: pointer;
   color: rgb(107, 11, 11);
+}
+
+@media screen and (max-width: 700px) {
+    #data-table thead tr th {
+        padding: 10px 20px;
+    }
 }
