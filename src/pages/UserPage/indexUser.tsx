@@ -9,7 +9,7 @@ import "../../App";
 const User = () => {
   const history = useHistory()
   const idData = history.location.state
-  
+
   const [getInput, setGetInput] = useState({ description: "", amount: "", date: "", id: idData });
   const [getName, setGetName] = useState();
   const [getData, setGetData] = useState<any[]>([])
@@ -27,54 +27,45 @@ const User = () => {
         }
       }
     });
-  })
-  
+  }, []);
+
   //buscar dados da tabela 'balance'
   useEffect(() => {
     api.get('balance').then(response => {
       for (let i = 0; i < response.data.length; i++) {
-        if (JSON.stringify(response.data[i].idData) === JSON.stringify(getInput.id)) {         
-          const {transaction_name, value, date} = response.data[i];
-          
+        if (JSON.stringify(response.data[i].idData) === JSON.stringify(getInput.id)) {
+          const { id, transaction_name, value, date, id_data } = response.data[i];
           var newDate = formatDate(date);
 
-          array.push([transaction_name, value, newDate])  
+          array.push([id, transaction_name, value, newDate])
           // setGetData([...getData,{transaction_name, value, date}])         
         }
-      }   
+      }
       //console.table(array)
       setGetData(array)
-            
+
     });
   }, [])
 
-  function deleteValues(index: number){
-      api.get('/balance').then(response => {
-          for (let i = 0; i < response.data.length; i++) {
-              if (JSON.stringify(response.data[i].transaction_name) === JSON.stringify(getData[index][0])) {         
-                const idBalance = response.data[i].id
-                  api.delete(`/balance/${idBalance}`)
-
-                  let updateData = getData.filter(item => item !== index)
-                  setGetData(updateData);
-
-                  return
-              }
-            }  
-      });      
-      
-      // console.table(getData)  
-      window.location.reload()
+  function deleteValues(index: number) {
+    api.delete(`/balance/${index}`)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  
+
   function formatDate(date: string) {
-        const splitDate = date.split("-")
-        return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`
+    const splitDate = date.split("-")
+    return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`
   }
 
   function saveData(event: FormEvent) {
     event.preventDefault()
-    
+
     api.post('/balance', getInput)
     alert('Data saved successfully!')
     //history.push('/')
@@ -87,7 +78,7 @@ const User = () => {
   }
 
   function open() {
-    let visible = document.getElementById('modal-overlay')    
+    let visible = document.getElementById('modal-overlay')
     visible?.classList.add('active')
   }
 
@@ -163,15 +154,15 @@ const User = () => {
                   <th>Date</th>
                 </tr>
               </thead>
-              <tbody>                 
-                    {getData.map((item, index) => 
-                      <tr key={index}>
-                        <td>{item[0]}</td>
-                        <td>{item[1]}</td>
-                        <td>{item[2]}</td>                       
-                        <td id="delete" onClick={() => deleteValues(index)}>Delete</td>
-                      </tr>
-                    )}                                                                               
+              <tbody>
+                {getData.map((item, index) =>
+                  <tr key={index}>
+                    <td>{item[1]}</td>
+                    <td>{item[2]}</td>
+                    <td>{item[3]}</td>
+                    <td id="delete" onClick={() => deleteValues(item[0])}>Delete</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </section>
@@ -179,7 +170,7 @@ const User = () => {
             Back
           </button>
         </div>
-      </div>      
+      </div>
     </div>
   );
 };
